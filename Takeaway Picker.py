@@ -2,16 +2,15 @@ from bs4 import BeautifulSoup
 import requests
 import random
 
-
-url = ""     #This is where the url of your postcode inputted in deliveroo goes
-
+postcode = 'XXX XXX' #input own postcode
+url = f'https://deliveroo.co.uk/restaurants/london/westminster?postcode={postcode}&collection=all-restaurants'
 result = requests.get(url)
 doc = BeautifulSoup(result.text, "html.parser")
 
 tags = doc.find_all("a")
 
 resturants = []
-for tag in range(5, (len(tags)-28)):
+for tag in range(5, (len(tags)-28)): #removes Nones and Social Medias
     individual = tags[tag].get("aria-label")
     try:
         resturants.append(individual)
@@ -19,6 +18,6 @@ for tag in range(5, (len(tags)-28)):
         pass
 choice = random.choice(resturants)
 amount = len(resturants)
-print("Out of " + str(amount) + " restrurants, the random resturant for XXXXX is " + choice) #XXXXX is city you are in
+print("Out of " + str(amount) + " restrurants, the random resturant for " + postcode + " is "  + choice)
 
 
