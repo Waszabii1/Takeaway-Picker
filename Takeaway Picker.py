@@ -19,22 +19,27 @@ def list_maker():
         except TypeError:
             pass
     
-    return restaurants
+    pick(restaurants)
 
-def pick():
+def pick(restaurants):
     rest = key, val = random.choice(list(restaurants.items()))
     amount = len(restaurants)
-    print("Out of " + str(amount) + " restaurants, the random restaurant for " + postcode + " is " + str(rest[0]) +  " , URL is deliveroo.co.uk" + str(rest[1]))
-    re_roll()
+    if len(restaurants) <= 1:
+        print("Hopefully you like this")
+        print("Out of " + str(amount) + " restaurants, the random restaurant for " + postcode + " is " + str(rest[0]) +  "\nURL is deliveroo.co.uk" + str(rest[1]))
+    else:
+        print("Out of " + str(amount) + " restaurants, the random restaurant for " + postcode + " is " + str(rest[0]) +  "\nURL is deliveroo.co.uk" + str(rest[1]))
+        restaurants.pop(key, val)
+        re_roll()
     
 def re_roll():
     question = input("Want to pick again? (Y/N)")
     global answer
     answer = question.upper()
     if answer == "Y":
-        answer = True
+        pick(restaurants)
     else:
-        answer = False
+        print("Enjoy your meal!")
     return answer
 
 
@@ -45,10 +50,6 @@ if __name__ == '__main__':
         if len(postcode) != 6:
             print("Please enter a valid postcode")
     list_maker()
-    pick()
-    while answer == True:
-        pick()
-        if answer == False:
-          print("Enjoy your meal!")
+    
 
 
