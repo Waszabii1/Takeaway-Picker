@@ -19,12 +19,8 @@ def cuisine_asker(): #asks if they want a specific cuisine of food, goes through
             if question == "STOP":
                 break
             if question == "Y":
-                if len(cuisine_choices) == 0:
-                    i = str(i).lower().replace(" ","+")
-                    cuisine_choices += i
-                else:
-                    i = str(i).lower().replace(" ","+")
-                    cuisine_choices += f"&cuisine={i}"
+                i = str(i).lower().replace(" ","+")
+                cuisine_choices += f"&cuisine={i}"
             else:
                 pass
         
@@ -34,7 +30,7 @@ def cuisine_asker(): #asks if they want a specific cuisine of food, goes through
  
 def list_maker(postcode):
 
-    url_main = f'https://deliveroo.co.uk/restaurants/london/westminster?postcode={postcode}&cuisine={cuisine_choices}&collection=all-restaurants'
+    url_main = f'https://deliveroo.co.uk/restaurants/london/westminster?postcode={postcode}{cuisine_choices}&collection=all-restaurants'
 
     result_main = requests.get(url_main)
 
