@@ -13,7 +13,7 @@ def cuisine_asker(): #asks if they want a specific cuisine of food, goes through
     cuisine_choices = str()
     question = input("Want to pick between cuisines? (Y/N)  ").upper()
     if question == "Y":
-        for i in cuisine_list:
+        for i in cuisine_list.values():
             print("If you are happy with your cuisine choices type stop")
             question = input(f"Do you want {str(i)} food? (Y/N)  ").upper()
             if question == "STOP":
@@ -140,12 +140,12 @@ if __name__ == '__main__':
 
     postcode = ""
 
-    cuisine_list = [
-"Afternoon tea", "All day breakfast", "American", "Asian", 
-"Asian Fusion", "Breakfast", "British", "Brunch", 
-"Café", "Chinese","Drinks", "French","Healthy", 
-"Indian", "Italian", "Japanese", "Korean", 
-"Lebanese", "Mediterranean", "Middle Eastern", "Thai", "Turkish"]
+    cuisine_list = {
+1:"Afternoon tea", 2:"All day breakfast", 3:"American", 4:"Asian", 
+5:"Asian Fusion", 6:"Breakfast", 7:"British", 8:"Brunch", 
+9:"Café", 10:"Chinese",11:"Drinks", 12:"French",13:"Healthy", 
+14:"Indian", 15:"Italian", 16:"Japanese", 17:"Korean", 
+18:"Lebanese", 19:"Mediterranean", 20:"Middle Eastern", 21:"Thai", 22:"Turkish"}
     
     cuisine_asker()
 
